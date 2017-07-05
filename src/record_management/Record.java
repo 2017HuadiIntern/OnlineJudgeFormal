@@ -1,7 +1,5 @@
 package record_management;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 /**
  * 做题记录类
  * @author 屈彬
@@ -44,4 +42,24 @@ public class Record {
 	 * @param ProblemID 题目编号
 	 */
 	public void setProblemID(String ProblemID){this.ProblemID=ProblemID;}
+	/**
+	 * 获取结果
+	 * @return 结果
+	 */
+	public boolean getResult(){return Result;}
+	/**
+	 * 设置结果
+	 * @param Result 结果
+	 */
+	public void setResult(boolean Result){this.Result=Result;}
+	/**
+	 * 获取时间
+	 * @return 时间
+	 */
+	public String getTime(){return Time;}
+	/**
+	 * 设置时间
+	 * @param Time 时间
+	 */
+	public void setTime(String Time){this.Time=Time;}
 }

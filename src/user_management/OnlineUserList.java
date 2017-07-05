@@ -8,9 +8,8 @@ import java.util.HashMap;
  */
 public class OnlineUserList{
 	/**
-	 * serial id
+	 * 在线用户列表
 	 */
-	private static final long serialVersionUID = 2060358793172971575L;
 	HashMap<String, User> UserList;
 	public OnlineUserList(){
 		UserList= new HashMap<String, User>();
