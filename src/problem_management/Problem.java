@@ -22,6 +22,16 @@ public class Problem {
 	 */
 	public void setID(int ID){this.ID=ID;}
 	/**
+	 * 获取标题
+	 * @return 标题
+	 */
+	public String getTitle(){return Title;}
+	/**
+	 * 设置标题
+	 * @param Title 标题
+	 */
+	public void setTitle(String Title){this.Title=Title;}
+	/**
 	 * 获取题目描述
 	 * @return 题目描述
 	 */

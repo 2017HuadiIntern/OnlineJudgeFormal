@@ -8,7 +8,7 @@ package record_management;
 public class Record {
 	int ID;
 	String UserName;
-	String ProblemID;
+	int ProblemID;
 	int Result;
 	String Time;
 	public Record(){}
@@ -36,12 +36,12 @@ public class Record {
 	 * 获取题目编号
 	 * @return 题目编号
 	 */
-	public String getProblemID(){return ProblemID;}
+	public int getProblemID(){return ProblemID;}
 	/**
 	 * 设置题目编号
 	 * @param ProblemID 题目编号
 	 */
-	public void setProblemID(String ProblemID){this.ProblemID=ProblemID;}
+	public void setProblemID(int ProblemID){this.ProblemID=ProblemID;}
 	/**
 	 * 获取结果
 	 * @return 结果
