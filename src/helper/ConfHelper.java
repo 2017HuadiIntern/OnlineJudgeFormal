@@ -35,6 +35,7 @@ public class ConfHelper {
 	 * 初始化配置助手
 	 */
 	protected void initiateConf(){
+		ValueHash = new HashMap<String, String>();
 		// 读取XML配置文件
 		SAXReader sax_reader = new SAXReader();
 		File xmlFile = new File(CONF_FILE_PATH);
@@ -60,12 +61,12 @@ public class ConfHelper {
 		//当前节点的名称、文本内容和属性
 		System.out.println("当前节点名称："+node.getName());//当前节点名称
 		System.out.println("当前节点的内容："+node.getTextTrim());//当前节点名称
+		ValueHash.put(node.getName(), node.getTextTrim());
 		List<Attribute> listAttr=node.attributes();//当前节点的所有属性的list
 		for(Attribute attr:listAttr){//遍历当前节点的所有属性
 			String name=attr.getName();//属性名称
 			String value=attr.getValue();//属性的值
-			System.out.println("属性名称："+name+"属性值："+value);
-			ValueHash.put(name, value);
+			
 		}
 		
 		//递归遍历当前节点所有的子节点
@@ -80,8 +81,8 @@ public class ConfHelper {
 	 * @exception 未知属性键异常
 	 * @return 属性值
 	 */
-	public String getConfValue(String key) throws Exception{
-		if(!ValueHash.containsKey(key))throw new Exception("unknown key!");
+	public String getConfValue(String key) {
+		if(!ValueHash.containsKey(key))return null;
 		return ValueHash.get(key);
 	}
 	
