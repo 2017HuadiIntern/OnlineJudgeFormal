@@ -1,11 +1,17 @@
 package helper;
 
+import com.mysql.jdbc.Connection;
+
 /**
  * 数据库助手
  * @author 屈彬
  *
  */
 public class DBHelper {
+	/**
+	 * 数据库连接器
+	 */
+	Connection MySQLConn;
 	String URL;
 	String UserName;
 	String Password;
