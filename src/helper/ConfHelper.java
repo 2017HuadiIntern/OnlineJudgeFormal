@@ -82,7 +82,6 @@ public class ConfHelper {
 	 * @return  Ù–‘÷µ
 	 */
 	public String getConfValue(String key) {
-		if(!ValueHash.containsKey(key))return null;
 		return ValueHash.get(key);
 	}
 	

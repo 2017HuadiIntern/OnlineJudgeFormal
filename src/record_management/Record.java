@@ -9,7 +9,7 @@ public class Record {
 	int ID;
 	String UserName;
 	String ProblemID;
-	boolean Result;
+	int Result;
 	String Time;
 	public Record(){}
 	/**
@@ -46,12 +46,12 @@ public class Record {
 	 * 获取结果
 	 * @return 结果
 	 */
-	public boolean getResult(){return Result;}
+	public int getResult(){return Result;}
 	/**
 	 * 设置结果
 	 * @param Result 结果
 	 */
-	public void setResult(boolean Result){this.Result=Result;}
+	public void setResult(int Result){this.Result=Result;}
 	/**
 	 * 获取时间
 	 * @return 时间
