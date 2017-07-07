@@ -23,6 +23,10 @@ public class DBHelper {
 	 * 数据库连接器
 	 */
 	Connection MySQLConn;
+	/**
+	 * 配置助手
+	 */
+	ConfHelper confHelper;
 	/* 数据库访问参数  */
 	String DriverName;
 	String URL;
@@ -57,7 +61,8 @@ public class DBHelper {
 	/**
 	 * 构造函数
 	 */
-	public DBHelper(){
+	public DBHelper(ConfHelper confHelper){
+		this.confHelper = confHelper;
 		initiatDBHelper();
 	}
 	/**
@@ -83,8 +88,6 @@ public class DBHelper {
 	 * 加载配置
 	 */
 	protected void loadConfigure(){
-
-		ConfHelper confHelper = new ConfHelper();
 		
 		DriverName = confHelper.getConfValue("DBDriver");
 		URL = confHelper.getConfValue("DBURL");

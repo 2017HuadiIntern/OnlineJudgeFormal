@@ -9,6 +9,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -20,7 +22,16 @@ public class ConfHelper {
 	/**
 	 * 配置文件路径
 	 */
-	protected final String CONF_FILE_PATH = "/conf/OJConfigure.xml";// undone
+	protected String CONF_FILE_PATH = "/conf/OJConfigure.xml";// undone
+	/**
+	 * 配置文件相对路径
+	 */
+	public static final String CONF_FILE_RELATED_PATH = "/conf/OJConfigure.xml";
+	/**
+	 * 获取配置文件路径
+	 * @return 配置文件路径
+	 */
+	public String getConfFilePath(){return CONF_FILE_PATH;}
 	/**
 	 * 配置属性哈希表
 	 */
@@ -29,6 +40,11 @@ public class ConfHelper {
 	 * 构造函数
 	 */
 	public ConfHelper(){
+		initiateConf();
+	}
+	/* 带参数的配置文件路径 */
+	public ConfHelper(String conf_file_path){
+		CONF_FILE_PATH = conf_file_path;
 		initiateConf();
 	}
 	/**

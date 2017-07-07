@@ -1,0 +1,86 @@
+@charset "utf-8";
+body {
+	width: 800px;
+	height: auto;
+}
+#lianjie1 {
+	width: 800px;
+	height: 200px;
+	float: left;
+}
+#lianjie2 {
+	float: left;
+	width: 800px;
+	height: 200px;
+}
+#lianjie1 #zuo1 {
+	width: 75px;
+	margin-top: 125px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+#lianjie2 #bian1 {
+	margin-top: 125px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75px;
+	text-align: center;
+}
+#yejiao {
+	text-align: center;
+	margin-top: 75px;
+}
+.span12 #carousel-343676 .left.carousel-control {
+}
+#daima {
+	width: auto;
+	height: 300px;
+	margin-top: 50px;
+}
+#daima form #tijiaokuang {
+	margin-left: 375px;
+	margin-right: auto;
+	width: 50px;
+}
+
+#daima form #shangchuan {
+	width: 800px;
+	height: 300px;
+}
+
+#dati {
+	width: 800px;
+	height: 300px;
+}
+#miaoshu {
+	width: 700px;
+	height: 300px;
+	margin-left: 50px;
+	margin-top: 75px;
+}
+#biaoti {
+	width: 200px;
+	height: 25px;
+}
+
+#yangli {
+	float: left;
+	width: 300px;
+	height: 100px;
+	margin-left: 50px;
+	margin-top: 20px;
+}
+#shuchu {
+	float: left;
+	width: 300px;
+	height: 100px;
+	margin-left: 100px;
+	margin-top: 20px;
+}
+#tijiaokuang {
+	width: 75px;
+	margin-left: 360px;
+	margin-top: 20px;
+
+}

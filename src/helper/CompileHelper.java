@@ -17,8 +17,13 @@ public class CompileHelper {
 	 * 工作目录
 	 */
 	String WORK_DIRECTORY;
+	/**
+	 * 配置助手
+	 */
+	ConfHelper confHelper;
 	
-	public CompileHelper(){
+	public CompileHelper(ConfHelper confHelper){
+		this.confHelper = confHelper;
 		initiatlize();
 	}
 	/**
@@ -31,7 +36,6 @@ public class CompileHelper {
 	 * 加载配置
 	 */
 	protected void loadConfigure(){
-		ConfHelper confHelper = new ConfHelper();
 		COMPILER_PATH = confHelper.getConfValue("CompilerPath");
 		WORK_DIRECTORY = confHelper.getConfValue("WorkDirectory");
 	}

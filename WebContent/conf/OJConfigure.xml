@@ -1,0 +1,25 @@
+<root>
+   <DBDriver>com.mysql.jdbc.Driver</DBDriver>
+   <DBURL>jdbc:mysql://localhost:3306/ojdb</DBURL>
+   <DBUserName>root</DBUserName>
+   <DBPassword>xjtu2017</DBPassword>
+   <DBName>OJDB</DBName>
+   <UserTable>user</UserTable>
+   <ProblemTable>problem</ProblemTable>
+   <RecordTable>record</RecordTable>
+   <UserTable_Name>user</UserTable_Name>
+   <UserTable_Password>password</UserTable_Password>
+   <ProblemTable_ID>pro_id</ProblemTable_ID>
+   <ProblemTable_Title>pro_title</ProblemTable_Title>
+   <ProblemTable_Description>pro_description</ProblemTable_Description>
+   <ProblemTable_InputCase>usecase_in</ProblemTable_InputCase>
+   <ProblemTable_OutputCase>usecase_out</ProblemTable_OutputCase>
+   <ProblemTable_Proposer>pro_maker</ProblemTable_Proposer>
+   <RecordTable_ID>record_num</RecordTable_ID>
+   <RecordTable_Solver>solver</RecordTable_Solver>
+   <RecordTable_ProblemID>problem_id</RecordTable_ProblemID>
+   <RecordTable_Time>record_time</RecordTable_Time>
+   <RecordTable_Result>result</RecordTable_Result>
+   <CompilerPath>D:\MinGW\bin\gcc.exe</CompilerPath>
+   <WorkDirectory>E:\projects\Java\OnlineJudgeFormal\upload</WorkDirectory>
+</root>
