@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="user_management.UserFactory"%>
 <%@page import="helper.ConfHelper"%>
 <%@page import="helper.DBHelper.DBObjectType"%>
@@ -10,6 +11,7 @@
 String path = request.getContextPath(); 
 String basePath = request.getSession().getServletContext().getRealPath("/");
 System.out.println("absolute path: " + basePath);
+
 
 final String Input_UserName = "username"; 
 final String Input_Password = "password1";
@@ -25,7 +27,7 @@ final String Input_ConfirmPassword = "password2";
  /* 检查两次输入的密码是否匹配 */
  if(!confirmPassword.equals(password)){
  	// 提示两次输入密码不匹配
- 	// undone
+ 	response.getWriter().println("两次输入的密码不匹配!");
  	return;
  }
   %>
@@ -33,17 +35,17 @@ final String Input_ConfirmPassword = "password2";
   /* 检验用户名和密码字符合法性 */
   if(userName.isEmpty()){
   	// 提示用户名不能为空
-  	// undone
+  	response.getWriter().println("用户名不能为空!");
   	return;
   }
   if(StringHelper.isContainChinese(userName)){
   	// 提示用户名中不能包含中文
-  	// undone
+  	response.getWriter().println("用户名不能包含中文!");
   	return;
   }
   if(StringHelper.isContainChinese(password)){
   	// 提示密码不能包含中文
-  	// undone
+  	response.getWriter().println("密码不能包含中文!");
   	return;
   }
    %>
@@ -55,7 +57,7 @@ final String Input_ConfirmPassword = "password2";
    if(check_users!=null){
    		if(!check_users.isEmpty()){
    			// 提示相同用户名的用户已存在，请更换用户名
-   			// undone
+   			response.getWriter().println("该用户名已存在，请使用另一用户名!");
    			return;
    		}
    }
@@ -68,5 +70,5 @@ final String Input_ConfirmPassword = "password2";
     dbHelper.createDBObject(newUser, DBObjectType.TYPE_USER);
     dbHelper.disconnectDB();
     // 提示注册成功，并跳转到登录页面
-    // undone
+    response.getWriter().println("register_success");
      %>

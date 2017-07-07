@@ -21,9 +21,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <meta http-equiv="expires" content="0">  
  <meta http-equiv="keywords" content="keyword1,keyword2,keyword3"> 
  <meta http-equiv="description" content="This is my page"> 
+<script type="text/javascript">
+function checkSession(){
+	alert("start");
+	var userName='<%=session.getAttribute("UserName")%>';
 
+	alert(userName);
+}
+</script>
  </head> 
-   <body>
+   <body onload="checkSession()">
+   <center>
  <nav class="navbar navbar-default">
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div class="collapse navbar-collapse" id="myDefaultNavbar1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="liebiao.jsp">在线答题 <span class="sr-only">(current)</span></a></li>
+        <li><a href="liebiao.jsp">在线答题</a></li>
         <li><a href="bianji.jsp">编辑题目</a></li>
        <li><a href="login.jsp">登录</a></li>      </ul>
 </div> 
@@ -53,26 +61,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img alt="" src="image/logo4.jpg" />
+						<img alt="" src="image/logo1.jpg" />
 						<div class="carousel-caption">
 							<h4>
-								文本1<span>。</span>
+								<span>。</span>
 							</h4>
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="image/logo4.jpg" />
+						<img alt="" src="image/logo2.jpg" />
 						<div class="carousel-caption">
 							<h4>
-								文本2
 							</h4>
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="image/logo4.jpg" />
+						<img alt="" src="image/logo3.jpg" />
 						<div class="carousel-caption">
 							<h4>
-								文本3
+								
 							</h4>
 						</div>
 					</div>
@@ -88,5 +95,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/jquery-1.11.3.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>
+</center>
 </body>
 </html>
