@@ -13,9 +13,9 @@ String basePath = request.getSession().getServletContext().getRealPath("/");
 System.out.println("absolute path: " + basePath);
 
 
-final String Input_UserName = "username"; 
-final String Input_Password = "password1";
-final String Input_ConfirmPassword = "password2";
+final String Input_UserName = ConfHelper.REQUEST_USER_NAME; 
+final String Input_Password = ConfHelper.REQUEST_REGISTER_PASSWORD;
+final String Input_ConfirmPassword = ConfHelper.REQUEST_CONFIRM_PASSWORD;
 %> 
  <% 
  /* 获取表单提交数据 */

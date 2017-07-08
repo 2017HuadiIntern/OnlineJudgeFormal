@@ -1,3 +1,4 @@
+<%@page import="helper.ConfHelper"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%> 
 <% 
 String path = request.getContextPath(); 
@@ -22,11 +23,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <meta http-equiv="keywords" content="keyword1,keyword2,keyword3"> 
  <meta http-equiv="description" content="This is my page"> 
 <script type="text/javascript">
+// 实现不跳转页面获取反馈信息
+ var xmlHttpReq;
+ // 创建HttpRequest对象
+ function createXmlHttpRequest(){
+	 if(window.XMLHttpRequest){
+		 xmlHttpReq = new XMLHttpRequest();// 非IE浏览器
+	 }else{
+		 xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");// IE浏览器
+	 }
+ }
+ // 退出登录事件
+ function logoutEvent(){
+	 //alert(username);
+	 createXmlHttpRequest();// 创建HttpRequest对象
+	 xmlHttpReq.onreadystatechange=responseHandle;// 设置收到回复时的动作
+	 var url = "jsp_action/loginout.jsp";
+	 xmlHttpReq.open("post",url,true);
+	 // 向服务器发送请求
+	 xmlHttpReq.send(null);
+ }
+ // 登录事件
+ function nevigateToLogin(){
+ 	alert("您尚未登录!");
+ 	window.location.href="login.jsp";
+ }
+ // 收到回复时的回调函数
+ function responseHandle(){
+	 if(xmlHttpReq.readyState==4){
+		 // 响应码若为200，则代表一切正常
+		 if(xmlHttpReq.status==200){
+			 var resultText = xmlHttpReq.responseText;
+			 if(resultText.indexOf("success") > 0){
+			 	alert("成功退出登录!");
+				window.location.href="welcome.jsp";
+			 }
+		 }
+	 }
+ }
 function checkSession(){
-	alert("start");
-	var userName='<%=session.getAttribute("UserName")%>';
-
-	alert(userName);
+	var userName='<%=session.getAttribute(ConfHelper.SESSION_USER_NAME)%>';
+	if(userName=="null"){
+		document.getElementById("panlogin2").innerHTML="登录";
+		document.getElementById("edit_problem").href="javascript:nevigateToLogin()";
+	}else{
+		var pan2 = document.getElementById("panlogin2");
+		pan2.innerHTML = userName + "退出登录";
+		pan2.href="javascript:logoutEvent()";
+	}
+	
 }
 </script>
  </head> 
@@ -42,8 +87,8 @@ function checkSession(){
     <div class="collapse navbar-collapse" id="myDefaultNavbar1">
       <ul class="nav navbar-nav">
         <li><a href="liebiao.jsp">在线答题</a></li>
-        <li><a href="bianji.jsp">编辑题目</a></li>
-       <li><a href="login.jsp">登录</a></li>      </ul>
+        <li><a href="bianji.jsp" id="edit_problem">编辑题目</a></li>
+       <li id="panlogin"><a href="login.jsp" id="panlogin2">登录</a></li>      </ul>
 </div> 
   </div>
 </nav>

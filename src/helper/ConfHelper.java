@@ -19,6 +19,13 @@ import org.dom4j.io.SAXReader;
 
 
 public class ConfHelper {
+	/* Session所使用名称 */
+	public static final String SESSION_USER_NAME="UserName";
+	/* HTTP请求所使用名称 */
+	public static final String REQUEST_USER_NAME="username";
+	public static final String REQUEST_LOGIN_PASSWORD="password";
+	public static final String REQUEST_REGISTER_PASSWORD="password1";
+	public static final String REQUEST_CONFIRM_PASSWORD="password2";
 	/**
 	 * 配置文件路径
 	 */

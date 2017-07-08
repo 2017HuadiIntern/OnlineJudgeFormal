@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%> 
+<%@page import="helper.ConfHelper"%>
 <% 
 String path = request.getContextPath(); 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
@@ -47,6 +48,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 // 向服务器发送请求
 	 xmlHttpReq.send(null);
  }
+ // 登录事件
+ function nevigateToLogin(){
+ 	alert("您尚未登录!");
+ 	window.location.href="login.jsp";
+ }
  // 收到回复时的回调函数
  function responseHandle(){
 	 if(xmlHttpReq.readyState==4){
@@ -63,10 +69,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }
 	 }
  }
+ function checkSession(){
+		var userName='<%=session.getAttribute(ConfHelper.SESSION_USER_NAME)%>';
+		if(userName=="null"){
+			document.getElementById("panlogin2").innerHTML="登录";
+			document.getElementById("edit_problem").href="javascript:nevigateToLogin()";
+		}else{
+			var pan2 = document.getElementById("panlogin2");
+			pan2.innerHTML = userName + "退出登录";
+			pan2.href="javascript:logoutEvent()";
+		}
+		
+	}
  </script> 
  </head> 
  
-   <body>
+   <body onload="checkSession()">
  <nav class="navbar navbar-default">
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -77,8 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="collapse navbar-collapse" id="myDefaultNavbar1">
       <ul class="nav navbar-nav">
         <li><a href="liebiao.jsp">在线答题</a></li>
-        <li><a href="bianji.jsp">编辑题目</a></li>
-       <li><a href="login.jsp">登录</a></li>      </ul>
+        <li><a href="bianji.jsp" id="edit_problem">编辑题目</a></li>
+       <li><a href="login.jsp" id="panlogin2">登录</a></li>      </ul>
 </div> 
   </div>
 </nav>

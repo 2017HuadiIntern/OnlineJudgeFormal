@@ -383,4 +383,70 @@ public class DBHelper {
 		}
 		return true;
 	}
+	/**
+	 * 执行MySQL语句
+	 * @param MySQLCmd 执行语句
+	 * @return 是否执行成功
+	 */
+	public boolean execMySQLAction(String MySQLCmd){
+		if(MySQLConn==null){
+			System.out.println("connector is null");
+			return false;
+		}
+		if(MySQLCmd.isEmpty()){
+			System.out.println("cmd is empty");
+			return false;
+		}
+		try{
+			if(MySQLConn.isClosed()){
+				System.out.println("connector is closed");
+				return false;
+			}
+			Statement statement = MySQLConn.createStatement();
+			statement.execute(MySQLCmd);
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}finally {
+			
+		}
+		return true;
+	}
+	/**
+	 * 执行查询语句
+	 * @param MySQLCmd 命令
+	 * @return 查询返回对象
+	 */
+	public ArrayList<Object> execMySQLQuery(String MySQLCmd){
+		ArrayList<Object> result = new ArrayList<Object>();
+		if(MySQLConn==null){
+			System.out.println("connector is null");
+			return null;
+		}
+		if(MySQLCmd.isEmpty()){
+			System.out.println("cmd is empty");
+			return null;
+		}
+		try{
+			if(MySQLConn.isClosed()){
+				System.out.println("connector is closed");
+				return null;
+			}
+			Statement statement = MySQLConn.createStatement();
+			ResultSet resultSet = statement.executeQuery(MySQLCmd);
+			int objectCounter = 0;
+			while(resultSet.next()){
+				result.add(resultSet.getObject(objectCounter));
+				++objectCounter;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}finally {
+			
+		}
+		return result;
+	}
 }

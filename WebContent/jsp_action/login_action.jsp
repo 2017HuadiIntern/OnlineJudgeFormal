@@ -12,8 +12,8 @@ System.out.println("absolute path: " + basePath);
  
  <%--该部分为手写登录过程 王瑞珏 --%>
  <%
- String UserName = request.getParameter("username");
- String Password = request.getParameter("password");
+ String UserName = request.getParameter(ConfHelper.REQUEST_USER_NAME);
+ String Password = request.getParameter(ConfHelper.REQUEST_LOGIN_PASSWORD);
  boolean rs=false;
  String Temp="";
  
@@ -26,6 +26,7 @@ System.out.println("absolute path: " + basePath);
  /* 连接数据库 */
  DBHelper dbHelper = new DBHelper(new ConfHelper(basePath + "\\" + ConfHelper.CONF_FILE_RELATED_PATH));
  ArrayList<Object> userList = dbHelper.getDBObject(dbHelper.UserTable_Name, UserName, DBObjectType.TYPE_USER);
+ dbHelper.disconnectDB();// 关闭数据库连接
  //查询用户名，如果查询到对应用户名将rs置为true
  User user = UserFactory.createUser();
  if(!userList.isEmpty()){
@@ -44,7 +45,7 @@ System.out.println("absolute path: " + basePath);
 	 response.getWriter().println("用户名或密码错误!");
 	 return;
  }
- request.getSession().setAttribute("UserName", UserName);//使用用户名作为session的属性
+ request.getSession().setAttribute(ConfHelper.SESSION_USER_NAME, UserName);//使用用户名作为session的属性
  session.setMaxInactiveInterval(3600);
  //返回欢迎界面
  response.getWriter().println("login_success");
