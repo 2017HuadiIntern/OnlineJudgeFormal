@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     if(resultText.indexOf("Nam") > 0){
                  // 获取服务器返回的用户信息
 			     var db_userName = eval("(" +resultText + ")")["userName"];
-			     var db_password = eval("(" +resultText + ")")["userName"];
+			     var db_password = eval("(" +resultText + ")")["password"];
 			     document.getElementById("textUserName").innerHTML = db_userName;
 			     document.getElementById("password1").value = db_password;
 			     document.getElementById("password2").value = db_password;

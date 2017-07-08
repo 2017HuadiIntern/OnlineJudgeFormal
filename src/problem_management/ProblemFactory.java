@@ -12,4 +12,17 @@ public class ProblemFactory {
 	public static Problem createProblem(){
 		return new Problem();
 	}
+	/**
+	 * 创建题目列表项
+	 */
+	public static ProblemListItem createProblemListItem(){
+		return new ProblemListItem();
+	}
+	/**
+	 * 创建题目列表
+	 * @return 题目列表
+	 */
+	public static ProblemList createProblemList(){
+		return new ProblemList();
+	}
 }

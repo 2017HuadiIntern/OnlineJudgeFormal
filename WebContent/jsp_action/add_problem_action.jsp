@@ -1,3 +1,4 @@
+<%@page import="helper.JSONHelper"%>
 <%@page import="helper.StringHelper"%>
 <%@page import="problem_management.ProblemFactory"%>
 <%@page import="user_management.UserFactory"%>
@@ -23,17 +24,26 @@ System.out.println("absolute path: " + basePath);
  
  %>
  <%
- /* 判断提交项是否包含特殊字符 */
-
+ /* 判断提交项是否合法 */
+if(ProblemTitle.isEmpty()){
+	response.getWriter().println("标题不能为空!");
+	return;
+}
+ if(ProblemInputCase.isEmpty()||ProblemOutputCase.isEmpty()){
+	 response.getWriter().println("至少要有一组输入输出用例!");
+		return;
+ }
  %>
  <%
  /* 从数据库中寻找一个未使用的题目编号 */
  DBHelper dbHelper = new DBHelper(new ConfHelper(basePath + "\\" + ConfHelper.CONF_FILE_RELATED_PATH));
- ArrayList<Object> problemList = dbHelper.execMySQLQuery("select * from " + dbHelper.ProblemTable);
+ System.out.println("select * from " + dbHelper.ProblemTable + ";");
+ ArrayList<Object> problemList = dbHelper.execMySQLQuery("select * from " + dbHelper.ProblemTable + ";", DBObjectType.TYPE_PROBLEM);
+ System.out.print(problemList.get(0)+"\r\n");
  int newID = 1;
  int tempID;
-for(Object problem : problemList){
-	tempID = ((Problem)problem).getID();
+for(int i=0;i<problemList.size();i++){
+	tempID = ((Problem)problemList.get(i)).getID();
 	if(tempID >= newID)newID = tempID + 1;
 }
  %>
@@ -46,6 +56,7 @@ for(Object problem : problemList){
  problem.setInputCase(ProblemInputCase);
  problem.setOutputCase(ProblemOutputCase);
  problem.setProposer(UserName);
+ System.out.println(problem.getTitle());
  dbHelper.createDBObject(problem, DBObjectType.TYPE_PROBLEM);
  dbHelper.disconnectDB();
  %>

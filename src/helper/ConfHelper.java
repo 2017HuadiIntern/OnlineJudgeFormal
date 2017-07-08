@@ -31,6 +31,8 @@ public class ConfHelper {
 	public static final String REQUEST_PROBLEM_DESCRIPTION="problem_description";
 	public static final String REQUEST_PROBLEM_INPUT_CASE="problem_input_case";
 	public static final String REQUEST_PROBLEM_OUTPUT_CASE="problem_output_case";
+	
+	public static final String REQUEST_PROBLEM_LIST_PAGE="problem_list_page";
 	/**
 	 * ≈‰÷√Œƒº˛¬∑æ∂
 	 */

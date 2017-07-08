@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function checkSession(){
 	var userName='<%=session.getAttribute(ConfHelper.SESSION_USER_NAME)%>';
 	if(userName=="null"){
-		alert("您尚未登录!");
+		alert("请先登录!");
 		window.location.href="login.jsp";
 	}else{
 	}
@@ -36,7 +36,7 @@ function checkSession(){
    <body onload="checkSession()">
 <script src="js/jquery-1.11.3.min.js"></script> 
 <script src="js/bootstrap.js"></script>
-<p id="biaoti2">这是问题的标题</p>
+<p id="bianhao">编号</p><p id="biaoti2">这是问题的标题</p>
 <div id="dati"><p id="miaoshu2">这是问题的描述</p></div>
 <div id="daima">
 <form name="input" action="代码输入文件" method="get">

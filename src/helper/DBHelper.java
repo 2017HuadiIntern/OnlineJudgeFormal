@@ -418,7 +418,7 @@ public class DBHelper {
 	 * @param MySQLCmd 命令
 	 * @return 查询返回对象
 	 */
-	public ArrayList<Object> execMySQLQuery(String MySQLCmd){
+	public ArrayList<Object> execMySQLQuery(String MySQLCmd, DBObjectType type){
 		ArrayList<Object> result = new ArrayList<Object>();
 		if(MySQLConn==null){
 			System.out.println("connector is null");
@@ -435,10 +435,77 @@ public class DBHelper {
 			}
 			Statement statement = MySQLConn.createStatement();
 			ResultSet resultSet = statement.executeQuery(MySQLCmd);
-			int objectCounter = 0;
+			switch (type) {
+			case TYPE_USER:
+				
+				while(resultSet.next()){
+					User user = UserFactory.createUser();
+					user.setUserName(resultSet.getString(UserTable_Name));
+					user.setPassword(resultSet.getString(UserTable_Password));
+					result.add(user);
+				}
+				break;
+			case TYPE_PROBLEM:
+				
+				while(resultSet.next()){
+					Problem problem = ProblemFactory.createProblem();
+					problem.setID(resultSet.getInt(ProblemTable_ID));
+					problem.setTitle(resultSet.getString(ProblemTable_Title));
+					problem.setDescription(resultSet.getString(ProblemTable_Description));
+					problem.setInputCase(resultSet.getString(ProblemTable_InputCase));
+					problem.setOutputCase(resultSet.getString(ProblemTable_OutputCase));
+					problem.setProposer(resultSet.getString(ProblemTable_Proposer));
+					result.add(problem);
+				}
+				break;
+			case TYPE_RECORD:
+				
+				while(resultSet.next()){
+					Record record = RecordFactory.createRecord();
+					record.setID(resultSet.getInt(RecordTable_ID));
+					record.setUserName(resultSet.getString(RecordTable_Solver));
+					record.setProblemID(resultSet.getInt(RecordTable_ProblemID));
+					record.setResult(resultSet.getInt(RecordTable_Result));
+					record.setTime(resultSet.getDate(RecordTable_Time).toString());
+					result.add(record);
+				}
+				break;
+			default:
+				break;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}finally {
+			
+		}
+		return result;
+	}
+	/**
+	 * 执行查询语句
+	 * @param MySQLCmd 命令
+	 * @return 查询返回对象
+	 */
+	public ArrayList<Object> execMySQLQuery(String MySQLCmd, String columnName){
+		ArrayList<Object> result = new ArrayList<Object>();
+		if(MySQLConn==null){
+			System.out.println("connector is null");
+			return null;
+		}
+		if(MySQLCmd.isEmpty()){
+			System.out.println("cmd is empty");
+			return null;
+		}
+		try{
+			if(MySQLConn.isClosed()){
+				System.out.println("connector is closed");
+				return null;
+			}
+			Statement statement = MySQLConn.createStatement();
+			ResultSet resultSet = statement.executeQuery(MySQLCmd);
 			while(resultSet.next()){
-				result.add(resultSet.getObject(objectCounter));
-				++objectCounter;
+				result.add(resultSet.getString(columnName));
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
