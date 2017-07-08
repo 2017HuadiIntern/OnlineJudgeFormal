@@ -33,9 +33,9 @@ public class DBHelper {
 	String UserName;
 	String Password;
 	String DatabaseName;
-	String UserTable;
-	String ProblemTable;
-	String RecordTable;
+	public String UserTable;
+	public String ProblemTable;
+	public String RecordTable;
 	/* ±íÁÐÃû  */
 	public String UserTable_Name;
 	public String UserTable_Password;

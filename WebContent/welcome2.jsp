@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%> 
 <%@page import="helper.ConfHelper"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%> 
 <% 
 String path = request.getContextPath(); 
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; 
@@ -22,101 +22,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <meta http-equiv="expires" content="0">  
  <meta http-equiv="keywords" content="keyword1,keyword2,keyword3"> 
  <meta http-equiv="description" content="This is my page"> 
-<script type="text/javascript">
 
-</script>
  </head> 
    <body>
+   <center>
  
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span12">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							编号
-						</th>
-						<th>
-							标题
-						</th>
-						<th>
-							作者
-						</th>
-					
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							1
-						</td>
-						<td>
-							<a href="zuoti.jsp">题1</a>
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						
-					</tr>
-					<tr class="success">
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						
-					</tr>
-					<tr class="error">
-						<td>
-							2
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							02/04/2012
-						</td>
-						
-					</tr>
-					<tr class="warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						
-					</tr>
-					<tr class="info">
-						<td>
-							4
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							04/04/2012
-						</td>
-						
-					</tr>
-				</tbody>
-			</table>
+			<div class="carousel slide" id="carousel-343676">
+				<ol class="carousel-indicators">
+					<li class="active" data-slide-to="0" data-target="#carousel-343676">
+					</li>
+					<li data-slide-to="1" data-target="#carousel-343676">
+					</li>
+					<li data-slide-to="2" data-target="#carousel-343676">
+					</li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img alt="" src="image/logo1.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								<span>。</span>
+							</h4>
+						</div>
+					</div>
+					<div class="item">
+						<img alt="" src="image/logo2.jpg" />
+						<div class="carousel-caption">
+							<h4>
+							</h4>
+						</div>
+					</div>
+					<div class="item">
+						<img alt="" src="image/logo3.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								
+							</h4>
+						</div>
+					</div>
+				</div> <a data-slide="prev" href="#carousel-343676" class="left carousel-control">‹</a> <a data-slide="next" href="#carousel-343676" class="right carousel-control">›</a>
+			</div>
 		</div>
 	</div>
 </div>
 
 
-
 <script src="js/jquery-1.11.3.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>
+</center>
 </body>
 </html>

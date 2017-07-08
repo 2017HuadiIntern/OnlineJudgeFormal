@@ -1,7 +1,7 @@
 @charset "utf-8";
 body {
 	width: 800px;
-	height: auto;
+	height: 100%;
 		margin-left: auto;
 	margin-right: auto;
 }
@@ -49,6 +49,10 @@ body {
 	width: auto;
 	height: 300px;
 	margin-top: 50px;
+}#tishi {
+
+
+	margin-top: 20px;
 }
 #daima form #tijiaokuang {
 	margin-left: 375px;
@@ -75,6 +79,95 @@ body {
 	width: 650px;
 	height: 25px;
 	margin-bottom: 50px;
+}#zi0 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi1 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi2 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi3 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi4 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi5 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi6 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi7 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi8 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi9 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi10 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi11 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}#zi12 {
+	width: 40px;
+	height: 50px;
+margin-top: 25px;
+}
+#OutputCase0 {
+	width: 150px;
+	height: 50px;
+}#OutputCase1 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase2 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase3 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase4 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase5 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase6 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase7 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase8 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase9 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase11 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
+}#OutputCase10 {
+	width: 150px;
+	height: 50px;margin-top: 5px;
 }#biaoti2 {
 	width: 400px;
 	margin-left: auto;
@@ -99,9 +192,23 @@ body {
 	margin-left: 100px;
 	margin-bottom: 50px;
 }
+
+#dynamicForm {
+    width: 500px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
 #tijiaokuang {
+	float: left;
 	width: 75px;
-	margin-left: 360px;
-	margin-top: 20px;
+	margin-left: 30px;
+	margin-top: 10px;
+
+}#zengjia {
+	float: left;
+	width: 75px;
+	margin-left: 310px;
+	margin-top: 10px;
+	text-align: center;
 
 }
