@@ -18,6 +18,11 @@ public class CompileHelper {
 	 */
 	String WORK_DIRECTORY;
 	/**
+	 * 获取工作目录
+	 * @return 工作目录
+	 */
+	public String getWorkDirecoty(){return WORK_DIRECTORY;}
+	/**
 	 * 配置助手
 	 */
 	ConfHelper confHelper;
@@ -156,5 +161,14 @@ public class CompileHelper {
 		 * @param Info 输出信息
 		 */
 		public void setInfo(String Info){this.Info=Info;}
+	}
+	/**
+	 * 生成C语言文件路径
+	 * @param userName 用户名
+	 * @param problemID 题目编号
+	 * @return 文件路径
+	 */
+	public String genCodeFilePath(String userName, String problemID){
+		return WORK_DIRECTORY + "\\" + userName + "-" + problemID + ".c";
 	}
 }

@@ -150,22 +150,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            			 for (var row = 1; row <= RecText.length; row++) {
 
            			     var rowCell = problemTable.insertRow(row);
-           			     rowCell.insertCell(0).innerHTML = "<a href=\"javascript:toZuoti()\">" + RecText[row - 1].ID + "</a>";
-           			     rowCell.insertCell(1).innerHTML = "<a href=\"javascript:toZuoti()\">" + RecText[row - 1].title + "</a>";
+           			     rowCell.insertCell(0).innerHTML = "<a href=\"javascript:toZuoti("+RecText[row - 1].ID+")\">" + RecText[row - 1].ID + "</a>";
+           			     rowCell.insertCell(1).innerHTML = "<a href=\"javascript:toZuoti("+RecText[row - 1].ID+")\">" + RecText[row - 1].title + "</a>";
            			     rowCell.insertCell(2).innerHTML = RecText[row - 1].proposer;
            			 }
                      
            		 }
            	 }
             }
-         function toZuoti(){
+         function toZuoti(pro_id){
         	 // 前往做题页面
     		if (userName == "null") {
         			// 用户未登录
         			alert("请先登录!");
         			window.location.href="login.jsp";
     		} else {
-    			window.location.href="zuoti.jsp";
+    			window.location.href="zuoti.jsp?problem_id=" + pro_id;
     		} 
          }
          function getProblemCount(){
@@ -195,6 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          }
             function onloadAction(){
             	// 起始动作
+            	checkSession();
             	getProblemCount();
             	//fetchProblem();
             }

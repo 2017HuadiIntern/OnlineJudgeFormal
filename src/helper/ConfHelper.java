@@ -27,12 +27,15 @@ public class ConfHelper {
 	public static final String REQUEST_REGISTER_PASSWORD="password1";
 	public static final String REQUEST_CONFIRM_PASSWORD="password2";
 	
+	public static final String REQUEST_PROBLEM_ID="problem_id";
 	public static final String REQUEST_PROBLEM_TITLE="problem_title";
 	public static final String REQUEST_PROBLEM_DESCRIPTION="problem_description";
 	public static final String REQUEST_PROBLEM_INPUT_CASE="problem_input_case";
 	public static final String REQUEST_PROBLEM_OUTPUT_CASE="problem_output_case";
 	
 	public static final String REQUEST_PROBLEM_LIST_PAGE="problem_list_page";
+	
+	public static final String REQUEST_CODE_TEXT="code_text";
 	/**
 	 * ≈‰÷√Œƒº˛¬∑æ∂
 	 */

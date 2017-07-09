@@ -419,6 +419,7 @@ public class DBHelper {
 	 * @return 查询返回对象
 	 */
 	public ArrayList<Object> execMySQLQuery(String MySQLCmd, DBObjectType type){
+		System.out.println("MySQL exec:"+MySQLCmd);
 		ArrayList<Object> result = new ArrayList<Object>();
 		if(MySQLConn==null){
 			System.out.println("connector is null");
@@ -515,5 +516,47 @@ public class DBHelper {
 			
 		}
 		return result;
+	}
+	/**
+	 * 创建或修改数据对象
+	 * @param object 对象
+	 * @param type 对象类型
+	 * @return 是否操作成功
+	 */
+	public boolean createOrModifyDBOject(Object object, DBObjectType type){
+		ArrayList<Object> objectArray = new ArrayList<Object>();// 用于检查元组是否存在
+		switch (type) {
+		case TYPE_USER:
+			objectArray = getDBObject(UserTable_Name, ((User)object).getUserName(), type);
+			break;
+		case TYPE_PROBLEM:
+			objectArray = getDBObject(ProblemTable_ID, ((Problem)object).getID(), type);
+			break;
+		case TYPE_RECORD:
+			objectArray = getDBObject(RecordTable_ID, ((Record)object).getID(), type);
+			break;
+		default:
+			return false;
+		}
+		if(objectArray.isEmpty()){
+			createDBObject(object, type);
+		}else{
+			// 直接删掉再新建一个
+			switch (type) {
+			case TYPE_USER:
+				removeDBObject(UserTable_Name, ((User)object).getUserName(), type);
+				break;
+			case TYPE_PROBLEM:
+				removeDBObject(ProblemTable_ID, ((Problem)object).getID(), type);
+				break;
+			case TYPE_RECORD:
+				removeDBObject(RecordTable_ID, ((Record)object).getID(), type);
+				break;
+			default:
+				return false;
+			}
+			createDBObject(object, type);
+		}
+		return true;
 	}
 }

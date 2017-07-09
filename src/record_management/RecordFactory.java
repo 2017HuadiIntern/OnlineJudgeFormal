@@ -12,4 +12,11 @@ public class RecordFactory {
 	public static Record createRecord(){
 		return new Record();
 	}
+	/**
+	 * 创建提交记录
+	 * @return 提交记录
+	 */
+	public static SubmitRecord createSubmitRecord(){
+		return new SubmitRecord();
+	}
 }
