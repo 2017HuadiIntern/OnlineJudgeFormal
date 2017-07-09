@@ -35,8 +35,8 @@ function addText() {
         inputArray[caseCounter] = document.getElementById("InputCase" + caseCounter).value;
         outputArray[caseCounter] = document.getElementById("OutputCase" + caseCounter).value;
     }
-    dform.innerHTML += "输入用例" + (TextCounter + 1) + ":<input type=\"text\" id=\"InputCase" + TextCounter + "\"/> 输出用例" +
-        (TextCounter + 1) + "<textarea class=\"outputcase\" id=\"OutputCase" + TextCounter + "\"/></textarea><br/>";
+    dform.innerHTML += "<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入用例" + (TextCounter + 1) + ":<input type=\"text\" id=\"InputCase" + TextCounter + "\"/> 输出用例" +
+        (TextCounter + 1) + "<textarea class=\"outputcase\" id=\"OutputCase" + TextCounter + "\"/></textarea>";
     // 把文本框的值返回
     document.getElementById("biaoti").value = title_value;
     document.getElementById("miaoshu").value = description_value;
@@ -62,12 +62,14 @@ function submitEvent(){
     var problemTitle = document.getElementById("biaoti").value;
     var problemDescription = document.getElementById("miaoshu").value;
     var caseCounter = 0;
-    var inputCaseArray = "";
-    var outputCaseArray = "";
+    var inputCaseArray = "<root>";
+    var outputCaseArray = "<root>";
     for (caseCounter = 0; caseCounter < TextCounter; caseCounter++) {
         inputCaseArray += "<input"+ caseCounter +">" + document.getElementById("InputCase" + caseCounter).value + "</input"+caseCounter+">";
         outputCaseArray += "<output" + caseCounter + ">" + document.getElementById("OutputCase" + caseCounter).value + "</output" + caseCounter + ">";
     }
+    inputCaseArray += "</root>"
+    outputCaseArray += "</root>"
 	 createXmlHttpRequest();// 创建HttpRequest对象
 	 xmlHttpReq.onreadystatechange=responseHandle;// 设置收到回复时的动作
 	 var url = "jsp_action/add_problem_action.jsp?username=" + username + "&problem_title=" + problemTitle +
@@ -117,7 +119,7 @@ function checkSession(){
                     温馨提示!
                 </h4>  在输入用例信息时请细心检查其准确性。
             </div>
-            <input id="zengjia" class="btn btn-info" type="button" value="增加用例" onclick="addText()" />
+            <input id="zengjia" class="btn btn-info" type="button" value="增加用例" onclick="addText()" >
             <input class="btn btn-warning" type="button" id="tijiaokuang" value="提交" onclick="submitEvent()">
         </form>
 

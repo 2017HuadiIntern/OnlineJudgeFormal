@@ -88,9 +88,12 @@ function getRecordResHandle() {
         // 响应码若为200，则代表一切正常
         if (xmlHttpReq.status == 200) {
             var resultText = xmlHttpReq.responseText;
-			if(resultText=="null"){
-				
-			}else{
+			if(resultText==null){
+
+			}else if(resultText=="null"){
+
+			}
+			else{
 				// json deserialize
 				// undone
 				var zuotiJieguo = eval("(" +resultText + ")").result;// 上次做题结果
@@ -104,7 +107,7 @@ function getRecordResHandle() {
 function checkSession(){
 	userName='<%=session.getAttribute(ConfHelper.SESSION_USER_NAME)%>';
 	problemID = getParamFromUrl("problem_id");
-	//alert(getParamFromUrl("problem_id"));
+	//alert(problemID);
 	if(userName=="null"){
 		alert("请先登录!");
 		window.location.href="login.jsp";
@@ -113,6 +116,57 @@ function checkSession(){
 		getProDetailEvent()
 	}
 }
+function submitCode(){
+	// 提交代码
+	//createXmlHttpRequest();// 创建HttpRequest对象
+ 	 //xmlHttpReq.onreadystatechange=getSubmitRecordResHandle;// 设置收到回复时的动作
+ 	 //alert(problemID);
+ 	 var urlP = "jsp_action/submit_code_action.jsp?problem_id=" + problemID + "&username=" + userName;
+ 	 var codeForm = document.getElementById("code_edit_form");
+ 	 //codeForm.action = url;
+ 	 //codeForm.method="post";
+ 	 //codeForm.ajaxSubmit();
+ 	 //xmlHttpReq.open("post",url,true);
+ 	 // 向服务器发送请求
+ 	 //xmlHttpReq.send(serialize(codeForm));// 提交表单
+ 	 $.ajax({
+ 	     url: urlP,//提交地址
+ 	     data: $("#code_edit_form").serialize(),//将表单数据序列化
+ 	     type: "POST",
+ 	     dataType: "json",
+ 	     target:"#compileError"
+ 	     //success: getSubmitRecordResHandle(data)
+ 	 }).done(function(res_data) {
+ 	    if(res_data[0].caseID=="-1"){
+ 	        alert("编译错误!\r\n" + res_data[0].compileInfo);
+ 	    }else{
+ 	    	document.getElementById("compileError").innerHTML = "";
+ 	        //alert(res_data[0].execInfo);
+ 	        // 更新结果列表
+ 	        var ResultTable = document.getElementById("resultTable");
+ 	        ResultTable.innerHTML = "<thead><tr><td>输入用例</td><td>输出用例</td><td>实际输出</td></tr></thead>";
+ 	        var totalScore = res_data.length;
+ 	        var score = 0;
+ 	        for (var row = 1; row <= res_data.length; row++) {
+
+ 	            var rowCell = ResultTable.insertRow(row);
+ 	            rowCell.insertCell(0).innerHTML = res_data[row - 1].inputCase;
+ 	            rowCell.insertCell(1).innerHTML = res_data[row - 1].outputCase;
+ 	            if (res_data[row - 1].execInfo.replace(/[\r\n]/g, '') == res_data[row - 1].outputCase) {
+ 	                rowCell.insertCell(2).innerHTML = res_data[row - 1].execInfo;
+ 	                ++score;
+ 	            } else {
+ 	                rowCell.insertCell(2).innerHTML = "<font color=\"#FF0000\">" + res_data[row - 1].execInfo + "</font>";
+ 	            }
+ 	            
+ 	        }
+ 	        // 显示得分
+ 	        document.getElementById("result_score").innerHTML = "得分:" + score + "/" + totalScore;
+ 	    }
+ 	});
+}
+//收到提交记录时的回调函数
+
     </script>
 </head>
 <body onload="checkSession()">
@@ -121,12 +175,26 @@ function checkSession(){
     <p id="bianhao">编号</p><p id="biaoti2">这是问题的标题</p>
     <div id="dati"><p id="miaoshu2">这是问题的描述</p></div>
     <div id="daima">
-        <form name="input" action="代码输入文件" method="get">
-            <textarea id="shangchuan" name="daima"></textarea>
-            <input type="submit" id="tijiaokuang" value="提交">
+        <form name="input" id="code_edit_form" action="jsp_action/submit_code_action.jsp" method="get">
+            <textarea id="shangchuan" name="code_text"></textarea>
+            <input type="button" id="tijiaokuang" class="btn btn-primary" value="提交" onclick="submitCode()">
         </form>
+        <br />
+        <font id="compileError" color="#FF0000"></font>
     </div>
-
+   <br/> <br/> <br/> <br/>
+    <div >
+        <table id="resultTable" class="table">
+            <thead>
+                <tr>
+                    <td>输入用例</td>
+                    <td>输出用例</td>
+                    <td>实际输出</td>
+                </tr>
+            </thead>
+        </table><br/>
+        <font id="result_score"></font>
+    </div>
 
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.js"></script>

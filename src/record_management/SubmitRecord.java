@@ -47,4 +47,32 @@ public class SubmitRecord {
 	 * @return 执行信息
 	 */
 	public String getExecInfo(){return ExecInfo;}
+	/**
+	 * 输入用例
+	 */
+	String InputCase;
+	/**
+	 * 设置输入用例
+	 * @param InputCase
+	 */
+	public void setInputCase(String InputCase){this.InputCase=InputCase;}
+	/**
+	 * 获取输出用例
+	 * @return
+	 */
+	public String getInputCase(){return InputCase;}
+	/**
+	 * 输出用例
+	 */
+	String OutputCase;
+	/**
+	 * 设置输出用例
+	 * @param OutputCase
+	 */
+	public void setOutputCase(String OutputCase){this.OutputCase=OutputCase;}
+	/**
+	 * 获取输出用例
+	 * @return
+	 */
+	public String getOutputCase(){return OutputCase;}
 }

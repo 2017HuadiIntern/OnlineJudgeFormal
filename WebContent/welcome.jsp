@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
     <base href="<%=basePath%>">
     <meta charset="utf-8">
-    <title>牛逼的王瑞珏</title>
+    <title>在线C语言判题系统</title>
     <script type="text/javascript" src="bootstrap/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
     <link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
@@ -129,7 +129,7 @@ function toUserManagement() {
                 </div>
             </div>
         </nav>
-        <iframe id="yemian" src="welcome2.jsp" width="800px" height="100%" SCROLLING="yes" frameborder="no"></iframe>
+        <iframe id="yemian" src="welcome2.jsp" width="820px" height="1200px" SCROLLING="yes" frameborder="no"></iframe>
 
         <div id="yejiao"><p id="biao">版权所属：牛逼的王瑞珏</p></div>
 

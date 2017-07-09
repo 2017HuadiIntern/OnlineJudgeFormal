@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </td> 
    </tr> 
    <tr> 
-    <td colspan="2"><input type="button" value="登录" onclick="loginEvent()"/> <a href="register.jsp">注册</a> 
+    <td colspan="2"><input type="button" class="btn btn-primary" value="登录" onclick="loginEvent()"/> <a href="register.jsp">注册</a> 
     </td> 
    </tr>
    <tr><td></td><td><font color="#FF0000" id="result"></font></td></tr> 

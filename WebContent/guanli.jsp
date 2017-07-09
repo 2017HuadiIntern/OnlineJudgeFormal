@@ -114,6 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
 </head>
 <body onload="checkSession()">
+<div class="page-header" ><h1>修改用户信息</h1></div>
     <form method="post">
         <table id="login">
 
@@ -136,9 +137,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </td>
             </tr>
             <tr>
-                <td><input type="button" value="保存" onclick="modifyEvent()" /></td>
-            </tr>
-            <tr><td><input type="button" value="取消" onclick="toIndex()" /></td></tr>
+                <td><input type="button" class="btn btn-primary" value="保存" onclick="modifyEvent()" /></td>
+            
+            <td><input type="button" class="btn btn-primary" value="取消" onclick="toIndex()" /></td>
             <tr><td></td><td><font color="#FF0000" id="result"></font></td></tr>
         </table>
 

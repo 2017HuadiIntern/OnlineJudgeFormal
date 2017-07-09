@@ -68,7 +68,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 </div>
-
+<h3>相关学习网站推荐</h3>
+<a href="https://gcc.gnu.org/" style="margin-left:50px"><img  src="image/logo.jpg" ></a>
+<a href="https://moodle.org/" style="margin-left:50px"><img  src="image/logo.jpg" ></a>
+<a href="http://poj.org/" style="margin-left:50px"><img  src="image/logo.jpg" ></a>
 
 <script src="js/jquery-1.11.3.min.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 

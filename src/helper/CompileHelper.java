@@ -49,10 +49,9 @@ public class CompileHelper {
 	 * @param codeFileName 代码文件路径
 	 * @return 编译信息
 	 */
-	public CompileResult doCompile(String codeFileName){
-		System.out.println("codefile:" + codeFileName);
+	public CompileResult doCompile(String codeFilePath){
+		System.out.println("codefile:" + codeFilePath);
 		/* 检查文件存在性 */
-		String codeFilePath = WORK_DIRECTORY + "\\" + codeFileName;
 		File codeFile = new File(codeFilePath);
 		if(!codeFile.exists()){
 			System.out.println("code file not exist in " + codeFilePath);
@@ -60,16 +59,17 @@ public class CompileHelper {
 		}
 		String[] gccCmd = {COMPILER_PATH, "-o", codeFilePath + ".exe", codeFilePath};
 		Runtime runtime = Runtime.getRuntime();
-		Process process;
+		Process process = null;
 		BufferedReader bufferedReader = null;
-		String outputLine;
+		
 		String outputInfo = "";
 		try{
 			process = runtime.exec(gccCmd);// 执行编译操作
-			bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));// 获取编译器输出信息
+			bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));// 获取编译器输出信息
+			String outputLine = "";
 			while((outputLine = bufferedReader.readLine())!=null){
 				System.out.println(outputLine);
-				outputInfo += outputLine + "\r\n";
+				outputInfo += (outputLine + "\r\n");
 			}
 			if(bufferedReader!=null)bufferedReader.close();
 		}catch (Exception e) {
@@ -79,13 +79,15 @@ public class CompileHelper {
 			
 		}
 		CompileResult result = new CompileResult();// 创建输出结果
+		result.setSucess(false);
 		if(outputInfo.isEmpty()){
 			result.setSucess(true);
 			result.setInfo("");
 		}else{
 			result.setSucess(false);
-			result.setInfo(outputInfo);
+			result.setInfo(outputInfo.replace(codeFilePath, ""));
 		}
+		if(process!=null)process.destroy();
 		return result;
 	}
 	/**
@@ -94,10 +96,9 @@ public class CompileHelper {
 	 * @param inputCase 输入用例
 	 * @return 执行信息
 	 */
-	public CompileResult doExec(String exeFileName, String inputCase){
-		System.out.println("exe file:" + exeFileName);
+	public CompileResult doExec(String exeFilePath, String inputCase){
+		System.out.println("exe file:" + exeFilePath);
 		/* 检查文件存在性 */
-		String exeFilePath = WORK_DIRECTORY + "\\" + exeFileName;
 		File file = new File(exeFilePath);
 		if(!file.exists()){
 			System.out.println("exe file not exist in " + exeFilePath);
@@ -105,7 +106,7 @@ public class CompileHelper {
 		}
 		String[] exeCmd = {exeFilePath, inputCase};
 		Runtime runtime = Runtime.getRuntime();
-		Process process;
+		Process process = null;
 		BufferedReader bufferedReader = null;
 		String outputLine;
 		String outputInfo = "";
@@ -126,6 +127,7 @@ public class CompileHelper {
 		CompileResult result = new CompileResult();// 创建输出结果
 		result.setInfo(outputInfo);
 		result.setSucess(true);
+		if(process!=null)process.destroy();
 		return result;
 	}
 	/**
