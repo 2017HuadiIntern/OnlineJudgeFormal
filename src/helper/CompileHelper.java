@@ -2,6 +2,7 @@ package helper;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  * 编译助手
@@ -104,7 +105,24 @@ public class CompileHelper {
 			System.out.println("exe file not exist in " + exeFilePath);
 			return null;
 		}
-		String[] exeCmd = {exeFilePath, inputCase};
+		/* 计算输入参数的数量 */
+		ArrayList<String> paramList = new ArrayList<String>();
+		String tempStr = "";
+		for(int i=0;i<inputCase.length();i++){
+			if((inputCase.charAt(i) + "").equals(" ")){
+				paramList.add(tempStr);
+				tempStr="";
+			}else{
+				tempStr+=inputCase.charAt(i)+"";
+			}
+		}
+		paramList.add(tempStr);
+		String[] exeCmd = new String[paramList.size() +1];
+		exeCmd[0] = exeFilePath;
+		for(int i=0;i<paramList.size();i++){
+			System.out.println("inputcase"+i+":"+paramList.get(i));
+			exeCmd[i + 1]=paramList.get(i);
+		}
 		Runtime runtime = Runtime.getRuntime();
 		Process process = null;
 		BufferedReader bufferedReader = null;
