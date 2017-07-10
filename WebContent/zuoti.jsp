@@ -141,7 +141,7 @@ function submitCode(){
  	        alert("编译错误!\r\n" + res_data[0].compileInfo);
  	    }else{
  	    	document.getElementById("compileError").innerHTML = "";
- 	        //alert(res_data[0].execInfo);
+ 	        alert("程序执行完毕!");
  	        // 更新结果列表
  	        var ResultTable = document.getElementById("resultTable");
  	        ResultTable.innerHTML = "<thead><tr><td>输入用例</td><td>输出用例</td><td>实际输出</td></tr></thead>";

@@ -21,6 +21,6 @@ int main(int arg_count, char **args)
     char * b_str = *(args+2);
     unsigned int a = getIntegerFromChar(a_str);
     unsigned int b = getIntegerFromChar(b_str);
-    printf("%d",a+b);
+    printf("%d",a*b);
 	return 0;
 }
